@@ -1,5 +1,5 @@
 const gulp = require('gulp');
-//const imagemin = require('gulp-imagemin');
+const imagemin = require('gulp-imagemin');
 const concat = require('gulp-concat');
 const terser = require('gulp-terser');
 const sourcemaps = require('gulp-sourcemaps');
@@ -23,9 +23,9 @@ function clon() {
     return src('src/*.html').pipe(gulp.dest('dist'));
 }
 // image optimize function
-//function imgTask() {
-    //return src('assets/images/*').pipe(imagemin()).pipe(gulp.dest('dist/images'));
-//}
+function imgTask() {
+    return src('assets/images/*').pipe(imagemin()).pipe(gulp.dest('dist/images'));
+}
 // javascript concatinate function
 function jsTask() {
     return src(jsPath)
@@ -64,8 +64,8 @@ function watchTask() {
 exports.styleTask = styleTask;
 exports.cssTask = cssTask;
 exports.jsTask = jsTask;
-//exports.imagTask = imgTask;
+exports.imagTask = imgTask;
 exports.clon = clon;
 //exports.default = parallel(clon,imgTask,jsTask);
 //exports.watch = watch;
-exports.default = series(parallel(clon,jsTask,cssTask,styleTask),watchTask);
+exports.default = series(parallel(clon,jsTask,imgTask,cssTask,styleTask),watchTask);
