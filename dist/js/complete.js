@@ -1,0 +1,2 @@
+document.addEventListener("DOMContentLoaded",()=>{let e=document.getElementsByClassName("wrapper_night")[0],t=document.getElementById("division");e.style.width=0,function(t){let n=0,o=0;function l(l){l.preventDefault(),n=o-l.clientX,console.log(n,o),o=l.clientX,t.style.left=t.offsetLeft-n+"px",e.style.width=t.style.left}function u(){document.onmouseup=null,document.onmousemove=null}t.onmousedown=function(e){e.preventDefault(),o=e.clientX,document.onmouseup=u,document.onmousemove=l}}(t)});
+//# sourceMappingURL=complete.js.map

@@ -1,0 +1,284 @@
+$bgColorNight: #323235;
+$bgColorDay: #ffffff;
+$font-s:18px;
+$primaryColorNight: #09a5ee;
+$secondaryColorNight: #00ff77;
+
+$primaryColorDay: #1f190c;
+$secondaryColorDay: #b4b4b4;
+$accentColor: #19171b;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  font-family: "Poppins";
+}
+
+html {
+  font-size: 18px;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  font-size: $font-s;
+  overflow: hidden;
+}
+
+.wrapper {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.wrapper_night {
+  background-color: $bgColorNight;
+}
+
+.wrapper_day {
+  z-index: -1;
+  background-color: $bgColorDay;
+  
+  }
+ 
+.container {
+  position: absolute;
+  height: 100%;
+  width: 100vw;
+}
+
+section {
+  .content {
+    width: 100%;
+    height: 70%;
+    padding: 25px 250px;
+    display: flex;
+    align-items: center;
+    z-index: 2;
+  }
+    .active {
+      background-color: $bgColorDay;
+      color: $bgColorNight;
+    }
+  }
+  .image_wrapper {
+    height: 100%;
+    flex: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    right: 200px;
+    .bg_circle {
+      background: url("../images/moon.png") right top no-repeat;
+      position: absolute;
+      width: 100%;
+      height: 525px;
+      min-height: 350px;
+      z-index: 1;
+    }
+    .bg_circle-d {
+      background: url("../images/cld-b.png") 5px 35px no-repeat;
+      position: absolute;
+      width: 100%;
+      min-height: 350px;
+      z-index: 1;
+      animation: clouds 90s linear infinite;
+			-webkit-transform: scale(0.5);
+			-moz-transform: scale(0.5);
+			transform: scale(0.5);
+      opacity: 0.9;
+      -webkit-filter: blur(6px);
+      filter: blur(6px);
+    }
+    @keyframes clouds{
+      100%{
+        transform: translateX(2000px);
+      }
+      95% {
+        transform: translateX(1700px);
+      }
+      85% {
+        transform: translateX(1600px);
+      }
+      100% {
+        transform: translateX(1300px);
+      }
+    }
+    
+  }
+
+
+.tick_img-1 {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.tick_img-2 {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+#division {
+  position: absolute;
+  height: 100%;
+  width: 5px;
+  background: $primaryColorDay;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99;
+  box-shadow: 5px 0px 10px $bgColorNight;
+}
+
+#division::before {
+  content: "Night";
+  color: $primaryColorNight;
+  position: absolute;
+  right: 50px;
+  width: 100px;
+  letter-spacing: 4px;
+  font-size: 1.6em;
+  font-weight: bold;
+  text-align: right;
+  text-align: center;
+  background: $bgColorNight;
+  padding: 0.5rem;
+  border-radius: 10%;
+}
+
+#division::after {
+  content: "Day";
+  color: $secondaryColorDay;
+  position: absolute;
+  left: 50px;
+  width: 100px;
+  letter-spacing: 4px;
+  font-size: 1.6em;
+  font-weight: bold;
+  text-align: center;
+  background: $bgColorNight;
+  padding: 0.5rem;
+  border-radius: 10%;
+}
+
+#drag {
+  position: absolute;
+  top: 50%;
+  cursor: move;
+  width: 60px;
+  height: 60px;
+  border-left: 10px solid $primaryColorNight;
+  border-top: 10px solid $primaryColorNight;
+  border-right: 10px solid $secondaryColorDay;
+  border-bottom: 10px solid $secondaryColorDay;
+  background: rgb(3, 3, 3);
+  border-radius: 50%;
+  transform: translate(0, -50%);
+  box-shadow: 5px 0px 20px $bgColorNight;
+}
+
+@media only screen and (max-width: 1200px) {
+  section {
+    .content {
+      padding: 0px 150px;
+    }
+    .image_wrapper {
+      flex: 4;
+      right: 100px;
+      z-index: 2;
+      .bg_circle {
+        background: url("../images/moon.png") right top no-repeat;
+        position: absolute;
+        width: 100%;
+        height: 525px;
+        min-height: 350px;
+        z-index: 1;
+      }
+      .bg_circle-d {
+        background: url("../images/cld-b.png") 5px 35px no-repeat;
+        position: absolute;
+        width: 100%;
+        min-height: 250px;
+        z-index: 1;
+        animation: clouds 90s linear infinite;
+        transform: scale(0.5);
+        opacity: 0.9;
+        -webkit-filter: blur(6px);
+        filter: blur(6px);
+      }
+      @keyframes clouds{
+        100%{
+          transform: translateX(3000px);
+        }
+        95%{
+          transform: translateX(2500px);
+        }
+        85%{
+          transform: translateX(2000px);
+        }
+      }
+    }
+  }
+  .tick_img-1,.tick_img-2 {
+    width: 150%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+}
+@media only screen and (max-width: 756px) {
+ 
+  section {
+    .content {
+      flex-direction: column;
+      padding: 0 0;
+    }
+    .text_wrapper{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .image_wrapper {
+      flex: 3;
+      right: 0px;
+      margin-top: 80px;
+      .bg_circle {
+        position: absolute;
+        width: 250px;
+        height: 250px;
+        top: 50%;
+        z-index: 1;
+        border-radius: 50%;
+      }
+     
+      }
+  }
+  .wrapper_day {
+    .image {
+      top: 20px;
+    }
+  }
+  .tick_img-1, .tick_img-2 {
+    width: 100vh;
+    height: 100vh;
+  }
+}
+
+
+
+ 
